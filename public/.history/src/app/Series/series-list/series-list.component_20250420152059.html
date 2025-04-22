@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let serie of series">
+      <div class="card h-100 shadow rounded-4">
+        <img [src]="serie.poster" class="card-img-top rounded-top-4" [alt]="serie.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ serie.name }}</h5>
+          <p class="card-text"><strong>Channel:</strong> {{ serie.channel }}</p>
+          <p class="card-text"><strong>Seasons:</strong> {{ serie.seasons }}</p>
+          <p class="card-text" style="max-height: 4em; overflow: hidden; text-overflow: ellipsis;">
+            {{ serie.description }}
+          </p>
+          <a [href]="serie.webpage" class="btn btn-primary" target="_blank">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

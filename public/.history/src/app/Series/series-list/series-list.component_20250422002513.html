@@ -1,0 +1,45 @@
+<div class="container mt-4">
+
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <img src="https://cdn-icons-png.flaticon.com/128/17748/17748922.png" alt="TV Icon" style="width: 40px;" />
+    <h2 class="mb-0">TV Series</h2>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let serie of series; index as i">
+      <div class="card h-100 shadow rounded-4" (click)="selectSerie(serie)">
+        <img [src]="serie.poster" class="card-img-top rounded-top-4" [alt]="serie.name">
+        <div class="card-body">
+          <h6 class="text-muted">#{{ i + 1 }}</h6>
+          <h5 class="card-title">{{ serie.name }}</h5>
+          <p class="card-text"><strong>Channel:</strong> {{ serie.channel }}</p>
+          <p class="card-text"><strong>Seasons:</strong> {{ serie.seasons }}</p>
+          <p class="card-text" style="max-height: 4em; overflow: hidden; text-overflow: ellipsis;">
+            {{ serie.description }}
+          </p>
+          <a [href]="serie.webpage" class="btn btn-primary" target="_blank">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-4 text-center">
+    <h5 class="text-secondary">
+      <strong>Seasons average: {{ getPromedio() | number:'1.2-2' }}</strong>
+    </h5>
+  </div>
+
+
+  <div *ngIf="selectedSerie" class="mt-5 d-flex justify-content-center">
+    <div class="card" style="width: 22rem;">
+      <img [src]="selectedSerie.poster" class="card-img-top" alt="Selected Series">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedSerie.name }}</h5>
+        <p class="card-text">{{ selectedSerie.description }}</p>
+        <a [href]="selectedSerie.webpage" class="btn btn-outline-primary" target="_blank">Sitio Oficial</a>
+      </div>
+    </div>
+  </div>
+</div>
+
